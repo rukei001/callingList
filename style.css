@@ -1,0 +1,497 @@
+:root {
+  --background: #17191D;
+  --basecolor: #ADB2B4;
+  --basecolor2: #737A7E;
+  --accentcolor: #C83E3E;
+  --darkcolor: #363C47;
+  --coolblack: #202328;
+  --white: #F0F1EE;
+  --character-theme: #E94E70;
+}
+
+
+body {
+  margin: 0;
+  background-color: var(--background);
+  color: var(--coolblack);
+}
+
+h1,
+h2,
+p {
+  color: var(--white);
+  text-align: center;
+}
+
+h1,
+h2 {
+  font-family: "Barlow Condensed", sans-serif;
+  /* letter-spacing: 0.8em; */
+}
+
+h2 {
+  letter-spacing: 0.8em;
+}
+
+.notice {
+  font-size: small;
+  color: var(--basecolor2)
+}
+
+/* プロフィールデザイン */
+.profile-left,
+.profile-right {
+  margin: 0px 16px 16px 16px;
+  width: 50%;
+}
+
+.profile-left {
+  width: 180px;
+  flex-shrink: 0;
+  text-align: center;
+
+  /* 画像真ん中に来い */
+  align-self: center;
+
+  position: relative;
+}
+
+/* 画像の四隅の装飾 */
+.profile-left::before {
+  content: "";
+  position: absolute;
+
+  width: 185px;
+  height: 185px;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  pointer-events: none;
+
+  background:
+    /* 左上 */
+    linear-gradient(var(--basecolor2), var(--basecolor2)) left top / 18px 2px no-repeat,
+    linear-gradient(var(--basecolor2), var(--basecolor2)) left top / 2px 18px no-repeat,
+
+    /* 右上 */
+    linear-gradient(var(--basecolor2), var(--basecolor2)) right top / 18px 2px no-repeat,
+    linear-gradient(var(--basecolor2), var(--basecolor2)) right top / 2px 18px no-repeat,
+
+    /* 左下 */
+    linear-gradient(var(--basecolor2), var(--basecolor2)) left bottom / 18px 2px no-repeat,
+    linear-gradient(var(--basecolor2), var(--basecolor2)) left bottom / 2px 18px no-repeat,
+
+    /* 右下 */
+    linear-gradient(var(--basecolor2), var(--basecolor2)) right bottom / 18px 2px no-repeat,
+    linear-gradient(var(--basecolor2), var(--basecolor2)) right bottom / 2px 18px no-repeat;
+}
+
+.profile-right {
+  flex: 1;
+  display: block;
+}
+
+.profile-item {
+  color: var(--white);
+  font-weight: bold;
+
+  margin: 6px 0;
+  padding: 8px 12px 8px 24px;
+  max-width: 70%;
+  text-align: left;
+
+  background:
+    linear-gradient(90deg,
+      rgba(255, 255, 255, 0.06),
+      transparent);
+
+  border-left: 2px solid var(--darkcolor);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  font-size: 14px;
+  letter-spacing: 0.03em;
+
+  /* 二列指定することでprofile.valueの記述開始位置を揃える */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.profile-label {
+  font-family: "Barlow Condensed", "Noto Sans JP", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.profile-value {
+  font-weight: 400;
+  font-family:
+    "Barlow",
+    "IBM Plex Sans JP",
+    sans-serif;
+}
+
+/* フルネーム */
+.fullname {
+  color: var(--white);
+  width: 100%;
+  margin: 16px 0 0;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  letter-spacing: 0.08em;
+  font-family:
+    "Barlow Condensed",
+    "IBM Plex Sans JP",
+    sans-serif;
+}
+
+/* プロフィール画像 */
+.profile-image {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 4px;
+
+  border: 1px solid var(--basecolor2);
+  /* border-bottom: 3px solid var(--character-theme); */
+
+  box-shadow:
+    0 0 0 3px var(--coolblack),
+    0 0 0 4px var(--darkcolor);
+
+  filter:
+    brightness(0.92) contrast(1.05);
+
+  transition:
+    transform 400ms ease,
+    filter 400ms ease,
+    box-shadow 400ms ease;
+
+  display: block;
+  margin: 0 auto;
+}
+
+#profile:hover .profile-image {
+  transform: scale(1.01);
+
+  filter:
+    brightness(1.05) contrast(1.08);
+
+  box-shadow:
+    0 0 0 3px var(--coolblack),
+    0 0 0 4px var(--basecolor2),
+    0 0 14px rgba(255, 255, 255, 0.12);
+}
+
+
+
+#profile {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+  margin: 32px;
+  background: linear-gradient(135deg,
+      #2a2e34 0%,
+      var(--coolblack) 55%,
+      #17191d 100%);
+  border-radius: 6px;
+  transition:
+    transform 400ms ease,
+    box-shadow 400ms ease;
+
+  position: relative;
+  overflow: hidden;
+  flex-wrap: wrap;
+}
+
+
+/* プロフィールブロックに疑似背景重ねてグラデ表現 */
+/* ※マウスホバーでbackground linear-gradiationのtransition操作ができないため、光ってる上レイヤーをマウスホバーで表示させるって形式 */
+#profile::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(135deg,
+      #40454d 0%,
+      var(--coolblack) 65%,
+      #17191d 100%);
+
+  opacity: 0;
+  transition: opacity 1000ms ease;
+  pointer-events: none;
+}
+
+#profile:hover::before {
+  opacity: 1;
+}
+
+#profile>* {
+  position: relative;
+  z-index: 1;
+}
+
+#profile:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    4px 4px 2px var(--character-theme),
+    8px 8px 10px color-mix(in srgb,
+      var(--character-theme) 55%,
+      transparent),
+    8px 8px 15px color-mix(in srgb,
+      var(--character-theme) 30%,
+      transparent);
+}
+
+/* プロフィールブロックを駆け抜けるひとすじの光 */
+#profile::after {
+  content: "";
+  position: absolute;
+
+
+  width: 20%;
+  height: 100%;
+
+  background:
+    linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.10),
+      transparent);
+
+  /* 角度調整　ななめがけにしてるよ */
+  transform: skewX(-15deg);
+
+  opacity: 0;
+  pointer-events: none;
+}
+
+#profile:hover::after {
+  animation: profile-scan 900ms ease-out;
+}
+
+
+
+/* 呼称表のデザイン */
+.calling-character-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.calling-character-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#calling {
+  background: var(--coolblack);
+  border: 1px solid var(--darkcolor);
+  border-radius: 4px;
+  margin: 32px;
+  overflow: hidden;
+}
+
+.calling-character-link {
+  border: none;
+  background: none;
+  color: var(--white);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.calling-character-link:hover {
+  color: var(--darkcolor);
+  text-decoration: underline;
+}
+
+#calling table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+#calling tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.035);
+}
+
+#calling tbody tr:hover {
+  background: var(--accentcolor);
+  td{
+  color: var(--white);
+  font-weight: bold;
+}
+}
+
+#calling th {
+    padding: 10px 12px;
+
+  color: var(--basecolor);
+  background: #191c20;
+
+  border-bottom: 1px solid var(--basecolor2);
+
+  font-family: "Barlow Condensed", "IBM Plex Sans JP", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+#calling td {
+  color: var(--basecolor);
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+  font-family: "IBM Plex Sans JP", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+/* ページ下部　キャラリスト装飾 */
+
+#character-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 0 64px;
+}
+
+.character-card {
+  border: none;
+  background: var(--basecolor);
+  border-radius: 4px;
+  padding: 8px;
+  text-align: center;
+  display: flex;
+
+  cursor: pointer;
+  transition:
+    transform 200ms ease,
+    background-color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.character-card:hover .character-card-image {
+  transform: scale(1.03);
+  transition: transform 400ms ease;
+}
+
+.character-card:hover {
+
+  background:
+    radial-gradient(circle at 20% 20%,
+      #e47777 0%,
+      var(--accentcolor) 28%,
+      var(--coolblack) 85%);
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 0 5px rgb(255, 73, 73),
+    0 0 20px rgba(200, 62, 62, 0.55),
+    0 0 30px rgba(200, 62, 62, 0.3);
+}
+
+.character-card-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.character-card span {
+  display: block;
+  flex: 1;
+  margin: auto
+}
+
+.characard-name {
+  font-weight: bold;
+}
+
+
+/* デスクトップ画面 */
+@media(width>=1200px) {
+  #profile {
+    width: 1000px;
+    margin: 32px auto;
+  }
+
+  #calling {
+    width: 1000px;
+    margin: 32px auto;
+  }
+
+  #character-list {
+    width: 1000px;
+    margin: 32px auto;
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+/* モバイル画面 */
+@media(width<=600px) {
+  #profile {
+    margin: 32px 16px;
+  }
+
+  #calling {
+    margin: 32px 16px;
+  }
+
+  #profile {
+    display: block;
+  }
+
+  .fullname {
+    margin-bottom: 16px;
+  }
+
+  .profile-item {
+    max-width: 100%;
+  }
+
+  .profile-left {
+    width: 100%;
+    margin: 0 0 16px;
+    text-align: center;
+  }
+
+  .profile-right {
+    width: auto;
+    margin: 16px 32px;
+    text-align: center;
+  }
+}
+
+/* プロフィールブロックのアニメーション */
+@keyframes profile-scan {
+  0% {
+    left: -30%;
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 110%;
+    opacity: 0;
+  }
+}
+
+
+/* フッター */
+footer {
+  color: var(--darkcolor);
+  text-align: center;
+  margin: 64px auto 8px;
+}
