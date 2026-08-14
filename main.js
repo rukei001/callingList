@@ -345,7 +345,7 @@
       id: "veronica",
       name: "ベロニカ",
       fullname: "Veronica Ivanova",
-      image: "image/veronica.PNG",
+      image: "image/veronica.png",
       firstperson: "私",
       secondperson: [
         {
