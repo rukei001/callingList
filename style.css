@@ -469,6 +469,26 @@ h2 {
     margin: 16px 32px;
     text-align: center;
   }
+
+  /* キャラクターリスト調整 */
+
+    #character-list {
+    margin: 0 16px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  /* スマホだけカードを縦配置に */
+    .character-card {
+    min-width: 0;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* キャラカード名のmargin調整 */
+  .character-card span {
+    flex: none;
+    margin: 6px 0 0;
+}
 }
 
 /* プロフィールブロックのアニメーション */
