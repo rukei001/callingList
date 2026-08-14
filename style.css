@@ -491,6 +491,31 @@ h2 {
 }
 }
 
+/* タッチ端末用プロフィール演出 */
+@media (width <= 600px) and (hover: none) and (pointer: coarse) {
+
+  #profile {
+    transform: none;
+
+    box-shadow:
+      4px 4px 2px var(--character-theme),
+      8px 8px 10px color-mix(in srgb,
+        var(--character-theme) 55%,
+        transparent),
+      8px 8px 15px color-mix(in srgb,
+        var(--character-theme) 30%,
+        transparent);
+  }
+
+  #profile:hover {
+    transform: none;
+  }
+
+  #profile::after {
+    animation: profile-scan 4s ease-in-out infinite;
+  }
+}
+
 /* プロフィールブロックのアニメーション */
 @keyframes profile-scan {
   0% {
