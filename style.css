@@ -307,10 +307,6 @@ h2 {
   font-weight: bold;
 }
 
-.calling-character-link:hover {
-  color: var(--darkcolor);
-  text-decoration: underline;
-}
 
 #calling table {
   width: 100%;
@@ -322,16 +318,8 @@ h2 {
   background: rgba(255, 255, 255, 0.035);
 }
 
-#calling tbody tr:hover {
-  background: var(--accentcolor);
-  td{
-  color: var(--white);
-  font-weight: bold;
-}
-}
-
 #calling th {
-    padding: 10px 12px;
+  padding: 10px 12px;
 
   color: var(--basecolor);
   background: #191c20;
@@ -354,6 +342,26 @@ h2 {
   font-weight: 500;
   letter-spacing: 0.04em;
 }
+
+/* マウス限定のホバー演出 */
+
+@media (hover: hover) and (pointer: fine) {
+
+  .calling-character-link:hover {
+    color: var(--darkcolor);
+    text-decoration: underline;
+  }
+
+  #calling tbody tr:hover {
+    background: var(--accentcolor);
+
+    td {
+      color: var(--white);
+      font-weight: bold;
+    }
+  }
+}
+
 
 /* ページ下部　キャラリスト装飾 */
 
@@ -379,7 +387,7 @@ h2 {
     box-shadow 200ms ease;
 }
 
-.character-card:hover .character-card-image {
+/* .character-card:hover .character-card-image {
   transform: scale(1.03);
   transition: transform 400ms ease;
 }
@@ -397,6 +405,30 @@ h2 {
     0 0 5px rgb(255, 73, 73),
     0 0 20px rgba(200, 62, 62, 0.55),
     0 0 30px rgba(200, 62, 62, 0.3);
+} */
+
+/* マウス限定のホバー演出 */
+@media (hover: hover) and (pointer: fine) {
+
+  .character-card:hover .character-card-image {
+    transform: scale(1.03);
+    transition: transform 400ms ease;
+  }
+
+  .character-card:hover {
+    background:
+      radial-gradient(circle at 20% 20%,
+        #e47777 0%,
+        var(--accentcolor) 28%,
+        var(--coolblack) 85%);
+
+    transform: translateY(-3px);
+
+    box-shadow:
+      0 0 5px rgb(255, 73, 73),
+      0 0 20px rgba(200, 62, 62, 0.55),
+      0 0 30px rgba(200, 62, 62, 0.3);
+  }
 }
 
 .character-card-image {
@@ -472,13 +504,13 @@ h2 {
 
   /* キャラクターリスト調整 */
 
-    #character-list {
+  #character-list {
     margin: 0 16px;
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   /* スマホだけカードを縦配置に */
-    .character-card {
+  .character-card {
     min-width: 0;
     flex-direction: column;
     align-items: center;
@@ -488,11 +520,24 @@ h2 {
   .character-card span {
     flex: none;
     margin: 6px 0 0;
-}
+  }
+
+  /* 呼称表の相手キャラ名を画像下に配置 */
+  .calling-character-cell {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .calling-character-link {
+    white-space: nowrap;
+    padding: 0;
+  }
 }
 
 /* タッチ端末用プロフィール演出 */
-@media (width <= 600px) and (hover: none) and (pointer: coarse) {
+@media (width <=600px) and (hover: none) and (pointer: coarse) {
 
   #profile {
     transform: none;
