@@ -387,6 +387,14 @@ h2 {
     box-shadow 200ms ease;
 }
 
+/* 明示的に文字色追加 */
+.character-card span {
+  display: block;
+  flex: 1;
+  margin: auto;
+  color: var(--coolblack);
+}
+
 /* .character-card:hover .character-card-image {
   transform: scale(1.03);
   transition: transform 400ms ease;
